@@ -6,7 +6,7 @@ use Livewire\Volt\Component;
 
 new class extends Component
 {
-    public string $password = '';
+    public string $verify_password = '';
 
     /**
      * Delete the currently authenticated user.
@@ -14,7 +14,7 @@ new class extends Component
     public function deleteUser(Logout $logout): void
     {
         $this->validate([
-            'password' => ['required', 'string', 'current_password'],
+            'verify_password' => ['required', 'string', 'current_password'],
         ]);
 
         tap(Auth::user(), $logout(...))->delete();
@@ -51,18 +51,18 @@ new class extends Component
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-input-label for="verify_password" value="{{ __('Password') }}" class="sr-only" />
 
                 <x-text-input
-                    wire:model="password"
-                    id="password"
-                    name="password"
+                    wire:model="verify_password"
+                    id="verify_password"
+                    name="verify_password"
                     type="password"
                     class="mt-1 block w-3/4"
                     placeholder="{{ __('Password') }}"
                 />
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->get('verify_password')" class="mt-2" />
             </div>
 
             <div class="mt-6 flex justify-end">

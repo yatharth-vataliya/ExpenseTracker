@@ -24,3 +24,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function() {
+    Route::view('transaction-types-index', 'livewire.pages.transactions-');
+});
