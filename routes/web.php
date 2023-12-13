@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UploadDataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,8 @@ Route::view('profile', 'profile')
 
 require __DIR__.'/auth.php';
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
     Route::view('transaction-types-index', 'livewire.pages.transactions-');
+    Route::get('upload-index', [UploadDataController::class, 'index'])->name('upload-index');
+    Route::post('upload-data', [UploadDataController::class, 'uploadData'])->name('upload-data');
 });
