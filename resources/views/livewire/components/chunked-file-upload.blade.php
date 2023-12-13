@@ -61,33 +61,25 @@
                                     formData.set('isFirstCall', false);
                                     this.isFirstCall = false;
                                 }
-                                if (i > file.size) {
-                                    chunk = file.slice((i - this.chunkSize), file.size);
-                                    formData.set('fileData', chunk);
-                                    await fetch('{{ route('upload-data') }}', {
-                                        method: 'POST',
-                                        body: formData,
-                                    }).then(async (response) => {
-                                        console.log(await response.text());
-                                    });
-                                    break;
-                                }
                                 chunk = file.slice(i, (i + this.chunkSize));
                                 formData.set('fileData', chunk);
                                 await fetch('{{ route('upload-data') }}', {
                                     method: 'POST',
                                     body: formData,
                                 }).then(async (response) => {
+                                    console.log('this is line number 82 without in condition');
                                     console.log(await response.text());
                                 });
                             }
                         }
                         //const response = await Promise.allSettled(uploadChunksArray); // this is not working because it doesn't respect the order of request
+
                         this.isFirstCall = true;
                         this.isButtonDisabled = false;
                         this.$refs.upload.value = '';
                         this.$refs.upload.dispatchEvent(new Event('change'));
                         */
+
                         const chunkEnd = Math.min(start + this.chunkSize, file.size);
                         const chunk = file.slice(start, chunkEnd);
                         const formData = new FormData();
