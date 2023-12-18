@@ -12,9 +12,14 @@
                 Submit
             </button>
         </form>
-        <div class="my-2 w-full" x-show="progressValue > 0">
-            <progress class="w-full" x-bind:max="maxProgressValue" x-bind:value="progressValue" id="fileUploadProgress"
-                x-text="progressValue"></progress>
+        <div>
+            <div class="py-2" x-show="isUploadDone || progressValueInPercentage > 0">
+                <span x-text="`Total progress in percentage :- ${progressValueInPercentage} %`"></span>
+            </div>
+            <div class="my-2 w-full" x-show="progressValue > 0">
+                <progress class="w-full" x-bind:max="maxProgressValue" x-bind:value="progressValue"
+                    id="fileUploadProgress" x-text="progressValue"></progress>
+            </div>
         </div>
     </div>
     @script
@@ -27,6 +32,9 @@
                     maxProgressValue: 0,
                     progressValue: 0,
                     chunkSize: 1024 * 1024 * 5,
+                    isUploadDone: false,
+                    progressValueInPercentage: 0,
+                    chunkUploadProgressValue: 0,
                     uploadChange(el) {
                         this.isButtonDisabled = el.target.files.length > 0 ? false : true;
                     },
@@ -83,6 +91,7 @@
                         const chunkEnd = Math.min(start + this.chunkSize, file.size);
                         const chunk = file.slice(start, chunkEnd);
                         const formData = new FormData();
+                        const totalChunks = file.size > this.chunkSize ? Math.round(file.size / this.chunkSize) : 1;
                         formData.append('fileData', chunk);
                         formData.append('_token', '{{ csrf_token() }}');
                         formData.append('fileName', this.fileName);
@@ -94,6 +103,13 @@
                             delete formData;
                             this.isFirstCall = false;
                             this.progressValue = ++this.progressValue;
+                            if (this.progressValue > 0 && file.size > this.chunkSize) {
+                                this.progressValueInPercentage = Math.round((this.progressValue * 100) /
+                                    totalChunks);
+                            } else {
+                                this.progressValueInPercentage = 100;
+                                this.isUploadDone = true;
+                            }
                             start = chunkEnd;
                             if (start < file.size) {
                                 await this.livewireUploadChunk(file, start);
