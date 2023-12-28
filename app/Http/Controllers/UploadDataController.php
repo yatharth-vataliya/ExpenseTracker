@@ -21,7 +21,7 @@ class UploadDataController extends Controller
             'fileData' => 'required|file',
             'fileName' => 'required|string',
             'isFirstCall' => [
-                'required', 'string', 'regex:/(true|false)/',
+                'required', 'string', 'regex:/^(true|false)$/',
             ],
         ], [], [
             'fileData' => 'Uploaded File Data',
