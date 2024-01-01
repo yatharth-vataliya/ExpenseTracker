@@ -12,6 +12,7 @@
                 x-on:click="uploadChunks" :disabled="isButtonDisabled">
                 Submit
             </button>
+            <input type="reset" class="p-2 hover:shadow-lg bg-black text-white rounded" x-on:click="reset()" />
         </form>
         <template x-for="(file, index) in files" x-bind:key="index">
             <div class="border rounded shadow border-violet-100 my-2">
@@ -34,17 +35,21 @@
                 return {
                     fileName: '',
                     files: [],
-                    isFirstCall: [],
                     isButtonDisabled: true,
                     maxProgressValue: [],
                     progressValue: [],
                     chunkSize: 1024 * 1024 * 5,
                     progressValueInPercentage: [],
+                    reset() {
+                        this.files = [];
+                        this.isButtonDisabled = true;
+                        this.$refs.upload.value = '';
+                        this.$refs.upload.dispatchEvent(new Event('change'));
+                    },
                     uploadChange(el) {
                         this.isButtonDisabled = el.target.files.length > 0 ? false : true;
                         this.files = [...document.querySelector('#upload').files];
                         this.files.forEach((file, index) => {
-                            this.isFirstCall[index] = true;
                             this.progressValue[index] = 0;
                             this.progressValueInPercentage[index] = 0;
                             this.maxProgressValue[index] = 100;
@@ -62,8 +67,7 @@
                             this.fileName = tempFileName;
                             await this.uploadFileChunk(tempFile, 0, index);
                             if (index == (this.files.length - 1)) {
-                                this.isFirstCall = [];
-                                this.isButtonDisabled = false;
+                                this.isButtonDisabled = true;
                                 this.$refs.upload.value = '';
                                 this.$refs.upload.dispatchEvent(new Event('change'));
                             }
