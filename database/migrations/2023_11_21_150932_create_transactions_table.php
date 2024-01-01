@@ -15,18 +15,19 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('transaction_type_id')->constrained()->onDelete('CASCADE');
-            $table->text('description')->nullable();
-            $table->integer('item_count');
+            $table->text('description')->nullable()->fulltext('transactions_description_fulltext');
             $table->string('item_unit')->nullable();
+            $table->integer('item_count');
             $table->integer('item_price');
             $table->integer('total');
-            $table->dateTime('transaction_date');
-            $table->softDeletes();
+            $table->dateTime('transaction_date')->index('transactions_transaction_date_index');
+            //$table->softDeletes();
+            $table->dateTime('deleted_at')->nullable();
             $table->dateTime('created_at')->default(now());
             $table->dateTime('updated_at')->nullable();
             // $table->timestamps();
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            // $table->foreign('transaction_type_id')->references('id')->on('transactions')->onDelete('CASCADE');
+            // $table->foreign('transaction_type_id')->references('id')->on('transaction_types')->onDelete('CASCADE');
         });
     }
 

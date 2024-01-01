@@ -14,14 +14,10 @@ return new class extends Migration
         Schema::create('transaction_types', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('CASCADE');
-            $table->foreignId('transaction_type_id')->constrained()->onDelete('CASCADE');
-            $table->text('description')->nullable();
-            $table->integer('item_count');
-            $table->string('item_unit')->nullable();
-            $table->integer('item_price');
-            $table->integer('total');
-            $table->dateTime('transaction_date')->default(now());
-            $table->softDeletes();
+            $table->string('transaction_type_name')->unique('transaction_types_transaction_type_name_unique');
+            $table->text('description')->nullable()->fulltext('transaction_types_description_fulltext');
+            //$table->softDeletes();
+            $table->dateTime('deleted_at')->nullable();
             $table->dateTime('created_at')->default(now());
             $table->dateTime('updated_at')->nullable();
             // $table->timestamps();
