@@ -22,12 +22,12 @@ class ChunkedFileUpload extends Component
 
     public function updatedFileChunk()
     {
-        $tmpHandle = fopen(Storage::path('/livewire-tmp/' . $this->fileChunk->getFileName()), 'rb');
+        $tmpHandle = fopen(Storage::path('/livewire-tmp/'.$this->fileChunk->getFileName()), 'rb');
         $tmpBuff = fread($tmpHandle, $this->chunkSize);
 
-        $finalFilePath = Storage::path('/public/' . $this->fileName);
-        if ($this->isFirstCall && Storage::exists('/public/' . $this->fileName)) {
-            Storage::delete('/public/' . $this->fileName);
+        $finalFilePath = Storage::path('/public/'.$this->fileName);
+        if ($this->isFirstCall && Storage::exists('/public/'.$this->fileName)) {
+            Storage::delete('/public/'.$this->fileName);
             sleep(1);
         }
 
@@ -36,7 +36,7 @@ class ChunkedFileUpload extends Component
 
         fclose($tmpHandle);
         fclose($fileHandle);
-        Storage::delete('/livewire-tmp/' . $this->fileChunk->getFileName());
+        Storage::delete('/livewire-tmp/'.$this->fileChunk->getFileName());
     }
 
     public function render()

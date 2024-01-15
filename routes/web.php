@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UploadDataController;
+use App\Livewire\Pages\TransactionTypes\TransactionTypesIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,11 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
-    Route::view('transaction-types-index', 'livewire.pages.transactions-');
+
+    // Below mentioned routes are for transaction types
+    Route::get('transaction-types-index', TransactionTypesIndex::class)->name('transaction-types-index');
+
+    // Below mentioned routes are for File Upload.
     Route::get('upload-index', [UploadDataController::class, 'index'])->name('upload-index');
     Route::post('upload-data', [UploadDataController::class, 'uploadData'])->name('upload-data');
 });

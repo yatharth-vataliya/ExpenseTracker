@@ -38,9 +38,9 @@ class UploadDataController extends Controller
         $tmpHandle = fopen($request->file('fileData')->getPathname(), 'rb');
         $tmpBuff = fread($tmpHandle, (1024 * 1024 * 5));
 
-        $finalFilePath = Storage::path('/public/' . $request->input('fileName'));
-        if ($request->boolean('isFirstCall') && Storage::exists('/public/' . $request->input('fileName'))) {
-            Storage::delete('/public/' . $request->input('fileName'));
+        $finalFilePath = Storage::path('/public/'.$request->input('fileName'));
+        if ($request->boolean('isFirstCall') && Storage::exists('/public/'.$request->input('fileName'))) {
+            Storage::delete('/public/'.$request->input('fileName'));
             sleep(1);
         }
 
@@ -49,6 +49,7 @@ class UploadDataController extends Controller
 
         fclose($tmpHandle);
         fclose($fileHandle);
+
         return response()->json([
             'uploadedFileName' => $request->input('fileName'),
         ], 200);
