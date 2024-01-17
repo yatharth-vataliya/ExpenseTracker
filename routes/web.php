@@ -33,7 +33,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaction-types-index', TransactionTypesIndex::class)->name('transaction-types-index');
 
     // Below mentioned routes are for File Upload.
-    //Route::get('/upload-index', [UploadDataController::class, 'index'])->name('upload-index');
-    Route::view('/upload-index', 'upload.upload-index')->name('upload-index');
+    Route::get('/upload-index', [UploadDataController::class, 'index'])->name('upload-index');
     Route::post('/upload-data', [UploadDataController::class, 'uploadData'])->name('upload-data');
 });

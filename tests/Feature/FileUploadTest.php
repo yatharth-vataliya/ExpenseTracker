@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,9 +22,6 @@ test('File upload page can render successfully', function () {
     $response->assertSeeText('Select Files');
 
     $this->get('/upload-index')->assertViewIs('upload.upload-index');
-
-    $indexResponse = (new \App\Http\Controllers\UploadDataController())->index();
-    $this->assertTrue($indexResponse instanceof View);
 });
 
 test('file storing process', function () {
