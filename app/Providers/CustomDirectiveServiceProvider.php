@@ -21,9 +21,9 @@ class CustomDirectiveServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::directive('isActiveRoute', function (string $routeName, string $activeClasses = '', string $deactiveClasses = '') {
-            return GeneralHelpers::isCurrentRoute($routeName) ? $activeClasses : $deactiveClasses;
-        });
+        // Blade::directive('isActiveRoute', function (string $routeName, string $activeClasses = '', string $deactiveClasses = '') {
+        //     return GeneralHelpers::isCurrentRoute($routeName) ? $activeClasses : $deactiveClasses;
+        // });
 
         Blade::if('isActiveRoute', function (string $routeName) {
             return GeneralHelpers::isCurrentRoute($routeName);

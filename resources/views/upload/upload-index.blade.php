@@ -4,7 +4,7 @@
             <form wire:submit="submit" enctype="multipart/form-data">
                 <input class="hidden" id="upload" name="upload" x-ref="upload" type="file" x-on:change="uploadChange"
                     multiple />
-                <x-custom-button class="text-slate-950 bg-white" type="button" x-on:click="$refs.upload.click()">
+                <x-custom-button type="button" x-on:click="$refs.upload.click()">
                     Select Files
                 </x-custom-button>
                 <x-custom-button type="button" x-on:click="uploadChunks" x-bind:disabled="isButtonDisabled">

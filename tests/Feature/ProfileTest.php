@@ -56,11 +56,12 @@ test('email verification status is unchanged when the email address is unchanged
 });
 
 test('user can delete their account', function () {
+
     $user = User::factory()->create();
 
     $this->actingAs($user);
 
-    $this->assertNull($user->deleted_at);
+    $this->assertNotSoftDeleted($user);
 
     $component = Volt::test('profile.delete-user-form')
         ->set('verify_password', 'password')
@@ -71,8 +72,7 @@ test('user can delete their account', function () {
         ->assertRedirect('/');
 
     $this->assertGuest();
-    $this->assertNotNull($user->fresh()->deleted_at);
-    //$this->assertNull($user->fresh());
+    $this->assertSoftDeleted($user);
 });
 
 test('correct password must be provided to delete account', function () {
