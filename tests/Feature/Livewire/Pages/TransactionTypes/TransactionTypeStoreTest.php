@@ -51,7 +51,6 @@ it('should give error while storing same transaction_type_name', function () {
 it('should give error while storing empty transaction_type_name', function () {
 
     $component = Livewire::actingAs(User::factory()->create())->test(TransactionTypeStore::class);
-    $transactionTypeName = 'Patrol';
     $description = 'no description';
 
     $component->set('form.description', $description);
