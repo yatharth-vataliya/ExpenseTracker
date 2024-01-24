@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class TransactionType extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'user_id', 'transaction_type_name', 'description',
+    ];
 }

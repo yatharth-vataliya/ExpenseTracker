@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot name="title">
+        File Upload
+    </x-slot>
     <div class="p-4 w-full">
         <div x-data="upload" class="w-full">
             <form wire:submit="submit" enctype="multipart/form-data">
@@ -32,7 +35,15 @@
     </div>
     @push('scripts')
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
+            if (typeof window.Alpine === 'undefined') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    initAlpine();
+                });
+            } else {
+                initAlpine();
+            }
+
+            function initAlpine() {
                 Alpine.data('upload', () => {
                     return {
                         fileName: '',
@@ -123,7 +134,7 @@
                         },
                     };
                 });
-            });
+            }
         </script>
     @endpush
 

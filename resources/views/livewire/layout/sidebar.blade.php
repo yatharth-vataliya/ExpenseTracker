@@ -3,5 +3,6 @@
         <x-li-tag route-name="profile" route-label="Profile" />
         <x-li-tag route-name="upload-index" route-label="Upload Data" />
         <x-li-tag route-name="transaction-types-index" route-label="Transaction Types" />
+        <x-li-tag route-name="transaction-types-store" route-label="Transaction Types Store" />
     </ul>
 </div>

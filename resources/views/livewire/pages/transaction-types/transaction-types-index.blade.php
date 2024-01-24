@@ -1,3 +1,3 @@
 <div>
-    Transaction Types Index
+    Success is as dangerous as failure.
 </div>
