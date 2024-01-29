@@ -24,6 +24,8 @@ class TransactionTypeStore extends Component
         TransactionType::create($data);
 
         $this->form->reset();
+
+        $this->js("showToaster('success', 'Transaction type successfully created');");
     }
 
     public function render()

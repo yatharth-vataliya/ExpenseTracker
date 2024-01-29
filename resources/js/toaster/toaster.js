@@ -19,6 +19,17 @@ export async function showToaster(type = "info", text = "This is just info text"
     };
     classString = classString + " " + (toasterTypesClass[type] ? toasterTypesClass[type] : toasterTypesClass["info"]);
     liElement.className = classString;
+
+    liElement.onmouseover = () => {
+        clearTimeout(liElement.timerId);
+        liElement.classList.remove('animate-hide-toaster', 'before:animate-toaster-progress');
+    }
+
+    liElement.onmouseleave = () => {
+        liElement.classList.add('before:animate-toaster-progress');
+        liElement.timerId = setTimeout(() => removeToaster(liElement), defaultTimeoutMiliseconds);
+    }
+
     toasterElement.appendChild(liElement);
 
     liElement.timerId = setTimeout(() => {
