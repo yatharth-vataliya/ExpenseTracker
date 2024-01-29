@@ -18,7 +18,9 @@ return new class extends Migration
             $table->text('queue');
             $table->longText('payload');
             $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+            // $table->timestamp('failed_at')->useCurrent();
+            $table->dateTime('created_at')->default(now());
+            $table->dateTime('updated_at')->nullable();
         });
     }
 
