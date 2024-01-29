@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Component;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::shouldBeStrict();
+
+        $this->bootMacros();
+    }
+
+    private function bootMacros()
+    {
+        Component::macro('toaster', function (string $type = 'info', string $text = 'Hey !') {
+            $this->js(<<<JS
+            showToaster('$type', '$text');
+        JS);
+        });
     }
 }
