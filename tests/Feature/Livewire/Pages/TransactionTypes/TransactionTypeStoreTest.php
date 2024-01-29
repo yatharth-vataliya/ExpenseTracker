@@ -47,7 +47,6 @@ it('should give error while storing same transaction_type_name', function () {
     $component->assertHasErrors(['transaction_type_name' => ['unique']]);
 });
 
-
 it('should give error while storing empty transaction_type_name', function () {
 
     $component = Livewire::actingAs(User::factory()->create())->test(TransactionTypeStore::class);
