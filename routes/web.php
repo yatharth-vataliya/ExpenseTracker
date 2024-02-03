@@ -26,13 +26,14 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth'])->group(function () {
 
     // Below mentioned routes are for transaction types
     Route::get('/transaction-types-index', TransactionTypesIndex::class)->name('transaction-types-index');
     Route::get('/transaction-types-store', TransactionTypeStore::class)->name('transaction-types-store');
+    Route::get('/transaction-types-edit/{id}', TransactionTypeStore::class)->name('transaction-types-edit');
 
     // Below mentioned routes are for File Upload.
     Route::get('/upload-index', [UploadDataController::class, 'index'])->name('upload-index');
