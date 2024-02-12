@@ -16,8 +16,8 @@ class TransactionType extends Model
 
     public function editUrl(): string
     {
-        return route("transaction-types-edit", [
-            "id" => $this->id,
+        return route('transaction-types-edit', [
+            'transactionType' => $this->id,
         ]);
     }
 }

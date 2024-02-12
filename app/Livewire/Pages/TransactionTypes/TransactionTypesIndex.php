@@ -11,27 +11,26 @@ use Livewire\WithPagination;
 #[Layout('layouts.app')]
 class TransactionTypesIndex extends Component
 {
-
-    use WithPagination, WithoutUrlPagination;
+    use WithoutUrlPagination, WithPagination;
 
     public array $columns = [
-        "no" => [
-            "header" => "No",
+        'no' => [
+            'header' => 'No',
         ],
-        "transaction_type_name" => "Transaction Type Name",
-        "description" => "Description of Transaction Type",
-        "action" => [
-            "header" => "Action",
+        'transaction_type_name' => 'Transaction Type Name',
+        'description' => 'Description of Transaction Type',
+        'action' => [
+            'header' => 'Action',
             //"view" => true,
-            "edit" => true,
-            "delete" => true,
+            'edit' => true,
+            'delete' => true,
         ],
     ];
 
     public function render()
     {
         return view('livewire.pages.transaction-types.transaction-types-index', [
-            'collections' => TransactionType::paginate(5),
+            'collections' => TransactionType::latest()->paginate(5),
             'pagination' => true,
         ]);
     }

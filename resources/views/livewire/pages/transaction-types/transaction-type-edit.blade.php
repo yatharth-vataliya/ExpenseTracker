@@ -3,12 +3,12 @@
         <div class="flex justify-center">
             <div class="font-bold">
                 <p>
-                    Transaction Type Store 
+                    Transaction Type Edit
                 </p>
             </div>
         </div>
         <div class="py-2 flex justify-center">
-            <form wire:submit="storeTransactionType">
+            <form wire:submit="updateTransactionType">
                 <div class="grid grid-cols-1 auto-cols-auto gap-4 w-[500px]">
                     <div>
                         <x-input-label for="transaction_type_name" value="Transaction Type Name" />
@@ -24,7 +24,7 @@
                     </div>
                     <div>
                         <x-custom-button type="submit">
-                            Submit
+                            Edit
                         </x-custom-button>
                     </div>
                 </div>

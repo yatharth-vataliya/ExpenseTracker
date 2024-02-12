@@ -2,21 +2,62 @@
 
 namespace App\Livewire\Forms\TransactionTypes;
 
+use App\Models\TransactionType;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class TransactionTypeForm extends Form
 {
+    public ?TransactionType $transactionType = null;
+
     #[Validate]
     public string $transaction_type_name = '';
 
     #[Validate]
     public string $description = '';
 
+    public function setTransactionType(TransactionType $transactionType): void
+    {
+        $this->transactionType = $transactionType;
+        $this->fill([
+            'transaction_type_name' => $transactionType->transaction_type_name,
+            'description' => $transactionType->description,
+        ]);
+    }
+
+    public function storeTransactionType(): void
+    {
+
+        $this->validate();
+        //$data = array_merge($this->form->all(), ['user_id' => auth()->id()]);
+        $data = $this->only(['transaction_type_name', 'description']) + ['user_id' => auth()->id()];
+
+        TransactionType::create($data);
+    }
+
+    public function updateTransactionType(): void
+    {
+        $this->validate();
+        $this->transactionType->update($this->only(
+            ['transaction_type_name', 'description']
+        ));
+    }
+
     public function rules()
     {
+        $rule = function () {
+            if (! empty($this->transactionType?->id)) {
+                return Rule::unique('transaction_types', 'transaction_type_name')->ignore($this->transactionType->id);
+            }
+
+            return Rule::unique('transaction_types', 'transaction_type_name');
+        };
+
         return [
-            'transaction_type_name' => 'required|string|unique:transaction_types,transaction_type_name',
+            'transaction_type_name' => [
+                'required', 'string', $rule(),
+            ],
             'description' => 'nullable|string',
         ];
     }
