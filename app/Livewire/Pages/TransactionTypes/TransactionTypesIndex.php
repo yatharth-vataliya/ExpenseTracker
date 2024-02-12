@@ -30,7 +30,7 @@ class TransactionTypesIndex extends Component
     public function render()
     {
         return view('livewire.pages.transaction-types.transaction-types-index', [
-            'collections' => TransactionType::latest()->paginate(5),
+            'collections' => TransactionType::where('user_id', auth()->id())->latest()->paginate(5),
             'pagination' => true,
         ]);
     }
