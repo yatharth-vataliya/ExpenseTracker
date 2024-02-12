@@ -16,11 +16,14 @@ class TransactionTypeEdit extends Component
 
     public function mount(TransactionType $transactionType)
     {
+
+        $this->authorize('view', $transactionType);
         $this->form->setTransactionType($transactionType);
     }
 
     public function updateTransactionType(): void
     {
+        $this->authorize('update', $this->form->transactionType);
         $this->form->updateTransactionType();
 
         $this->toaster('success', 'Transaction type successfully Updated');

@@ -20,7 +20,7 @@ class TransactionTypePolicy
      */
     public function view(User $user, TransactionType $transactionType): bool
     {
-        //
+        return $user->id === $transactionType->user_id;
     }
 
     /**
@@ -36,7 +36,7 @@ class TransactionTypePolicy
      */
     public function update(User $user, TransactionType $transactionType): bool
     {
-        //
+        return $user->id === $transactionType->user_id;
     }
 
     /**

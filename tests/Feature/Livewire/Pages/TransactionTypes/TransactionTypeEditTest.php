@@ -5,8 +5,25 @@ use App\Models\TransactionType;
 use App\Models\User;
 use Livewire\Livewire;
 
+test('transactiontypeediturlgeneration', function () {
+    $user = User::factory()->create();
+
+    $transactionType = TransactionType::create(
+        [
+            'user_id' => $user->id,
+            'transaction_type_name' => 'Nothing',
+        ]
+    );
+
+    $route = route('transaction-types-edit', ['transactionType' => $transactionType->id]);
+
+    expect($route === $transactionType->editUrl())->toBe(true);
+});
+
 it('renders successfully', function () {
     $user = User::factory()->create();
+
+    Livewire::actingAs($user);
 
     $transactionType = TransactionType::create(
         [
