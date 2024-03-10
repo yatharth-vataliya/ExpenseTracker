@@ -13,6 +13,8 @@ class TransactionTypesIndex extends Component
 {
     use WithoutUrlPagination, WithPagination;
 
+    public string $moduleName = 'Trasanction Type';
+
     public array $columns = [
         'no' => [
             'header' => 'No',
@@ -23,9 +25,20 @@ class TransactionTypesIndex extends Component
             'header' => 'Action',
             //"view" => true,
             'edit' => true,
-            'delete' => true,
+            'delete' => [
+                'isDelete' => true,
+                'deleteFunction' => 'deleteTransactionType',
+                'deleteFunctionParameters' => ['id'],
+            ],
         ],
     ];
+
+    public function deleteTransactionType(int $id)
+    {
+        $transactionType = TransactionType::findOrFail($id);
+        $this->authorize('delete', $transactionType);
+        $transactionType->delete();
+    }
 
     public function render()
     {
