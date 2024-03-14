@@ -17,7 +17,9 @@ class TransactionTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => auth()->id(),
+            'transaction_type_name' => fake()->unique()->text(10),
+            'description' => fake()->text(),
         ];
     }
 }
