@@ -36,7 +36,8 @@
                                             </a>
                                         @endif
                                         @if (!empty($column['edit']) && $column['edit'])
-                                            <x-custom-link-button wire:navigate href="{{ $item->editUrl() }}" color="warning">
+                                            <x-custom-link-button wire:navigate href="{{ $item->editUrl() }}"
+                                                color="warning">
                                                 Edit
                                             </x-custom-link-button>
                                         @endif
@@ -60,7 +61,7 @@
                                             Delete
                                         </button> --}}
                                             <x-custom-link-button
-                                                x-on:click="openConfirmationModal({{ $item->id }})"
+                                                x-on:click.prevent="openConfirmationModal({{ $item->id }})"
                                                 color="error">Delete
                                             </x-custom-link-button>
                                         @endif
