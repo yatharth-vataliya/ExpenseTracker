@@ -73,21 +73,13 @@ it('has valid error if we try to insert duplicate value which is not belong to c
     $user = User::factory()->create();
     Livewire::actingAs($user);
 
-    $transactionType = TransactionType::create(
-        [
-            'user_id' => $user->id,
-            'transaction_type_name' => 'test 1',
-            'description' => 'test description',
-        ]
-    );
+    $transactionType = TransactionType::factory()->create([
+        'user_id' => $user->id,
+    ]);
 
-    $transactionType2 = TransactionType::create(
-        [
-            'user_id' => $user->id,
-            'transaction_type_name' => 'test 2',
-            'description' => 'test description',
-        ]
-    );
+    $transactionType2 = TransactionType::factory()->create([
+        'user_id' => $user->id,
+    ]);
 
     $component = Livewire::test(TransactionTypeEdit::class, ['transactionType' => $transactionType->id]);
 
@@ -97,5 +89,5 @@ it('has valid error if we try to insert duplicate value which is not belong to c
     $component->set('form.transaction_type_name', $transactionType2->transaction_type_name);
     $component->set('form.description', $transactionType2->description);
 
-    $component->call('updateTransactionType')->assertHasErrors(['transaction_type_name' => ['unique']]);
+    $component->call('updateTransactionType')->assertHasErrors(['form.transaction_type_name' => ['unique']]);
 });

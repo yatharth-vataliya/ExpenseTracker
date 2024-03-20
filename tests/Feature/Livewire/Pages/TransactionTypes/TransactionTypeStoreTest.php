@@ -44,7 +44,7 @@ it('should give error while storing same transaction_type_name', function () {
     $component->call('storeTransactionType');
 
     $component->assertHasErrors('form.transaction_type_name');
-    $component->assertHasErrors(['transaction_type_name' => ['unique']]);
+    $component->assertHasErrors(['form.transaction_type_name' => ['unique']]);
 });
 
 it('should give error while storing empty transaction_type_name', function () {
@@ -56,5 +56,5 @@ it('should give error while storing empty transaction_type_name', function () {
     $component->call('storeTransactionType');
 
     $component->assertHasErrors('form.transaction_type_name');
-    $component->assertHasErrors(['transaction_type_name' => ['required']]);
+    $component->assertHasErrors(['form.transaction_type_name' => ['required']]);
 });
