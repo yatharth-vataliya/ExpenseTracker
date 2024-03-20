@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UploadDataController;
 use App\Livewire\Pages\Transactions\TransactionsIndex;
+use App\Livewire\Pages\Transactions\TransactionsStore;
 use App\Livewire\Pages\TransactionTypes\TransactionTypeEdit;
 use App\Livewire\Pages\TransactionTypes\TransactionTypesIndex;
 use App\Livewire\Pages\TransactionTypes\TransactionTypeStore;
@@ -38,7 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaction-types-edit/{transactionType}', TransactionTypeEdit::class)->name('transaction-types-edit');
 
     //Below mentioned routes are for transactions
-    Route::get('/transaction-index', TransactionsIndex::class)->name('transaction-index');
+    Route::get('/transactions-index', TransactionsIndex::class)->name('transactions-index');
+    Route::get('/transactions-store', TransactionsStore::class)->name('transactions-store');
 
     // Below mentioned routes are for File Upload.
     Route::get('/upload-index', [UploadDataController::class, 'index'])->name('upload-index');

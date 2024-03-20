@@ -2,12 +2,12 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 
 class GeneralHelpers
 {
     public static function isCurrentRoute(string $routeName): bool
     {
-        return Request::is($routeName);
+        return Route::currentRouteName() === $routeName;
     }
 }

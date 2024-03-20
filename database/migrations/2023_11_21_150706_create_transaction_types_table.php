@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transaction_types', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('CASCADE');
-            $table->string('transaction_type_name')->unique('transaction_types_transaction_type_name_unique');
+            $table->string('transaction_type_name')->index('transaction_types_transaction_type_name_index');
             $table->text('description')->nullable()->fulltext('transaction_types_description_fulltext');
             //$table->softDeletes();
             $table->dateTime('deleted_at')->nullable();

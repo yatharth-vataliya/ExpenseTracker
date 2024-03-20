@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms\TransactionTypes;
 
 use App\Models\TransactionType;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -47,11 +48,11 @@ class TransactionTypeForm extends Form
     public function rules()
     {
         $rule = function () {
-            if (! empty($this->transactionType?->id)) {
-                return Rule::unique('transaction_types', 'transaction_type_name')->ignore($this->transactionType->id);
+            if (!empty($this->transactionType?->id)) {
+                return Rule::unique('transaction_types', 'transaction_type_name')->where(fn (Builder $query) => $query->where('user_id', '=', auth()->id()))->ignore($this->transactionType->id);
             }
 
-            return Rule::unique('transaction_types', 'transaction_type_name');
+            return Rule::unique('transaction_types', 'transaction_type_name')->where(fn (Builder $query) => $query->where('user_id', '=', auth()->id()));
         };
 
         return [

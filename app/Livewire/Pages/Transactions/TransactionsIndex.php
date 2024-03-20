@@ -3,8 +3,10 @@
 namespace App\Livewire\Pages\Transactions;
 
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Transactions')]
 #[Layout('layouts.app')]
 class TransactionsIndex extends Component
 {
