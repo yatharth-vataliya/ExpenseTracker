@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('item_unit')->nullable();
             $table->integer('item_count');
             $table->integer('item_price');
-            $table->integer('total');
-            $table->dateTime('transaction_date')->index('transactions_transaction_date_index');
+            $table->integer('total')->storedAs('item_count * item_price');
+            $table->date('transaction_date')->index('transactions_transaction_date_index');
             //$table->softDeletes();
             $table->dateTime('deleted_at')->nullable();
             $table->dateTime('created_at')->default(now());

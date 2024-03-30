@@ -12,7 +12,7 @@ class TransactionTypePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -52,7 +52,7 @@ class TransactionTypePolicy
      */
     public function restore(User $user, TransactionType $transactionType): bool
     {
-        //
+        return $user->id === $transactionType->user_id;
     }
 
     /**
@@ -60,6 +60,6 @@ class TransactionTypePolicy
      */
     public function forceDelete(User $user, TransactionType $transactionType): bool
     {
-        //
+        return $user->id === $transactionType->user_id;
     }
 }

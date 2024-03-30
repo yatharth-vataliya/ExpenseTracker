@@ -70,7 +70,8 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Kolkata',
+    'timezone' => 'UTC',
+    'timezone_indian' => 'Asia/Kolkata',
 
     /*
     |--------------------------------------------------------------------------

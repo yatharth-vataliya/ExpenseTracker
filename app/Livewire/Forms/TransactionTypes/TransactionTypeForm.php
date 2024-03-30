@@ -45,10 +45,10 @@ class TransactionTypeForm extends Form
         ));
     }
 
-    public function rules()
+    public function rules(): array
     {
         $rule = function () {
-            if (!empty($this->transactionType?->id)) {
+            if (! empty($this->transactionType?->id)) {
                 return Rule::unique('transaction_types', 'transaction_type_name')->where(fn (Builder $query) => $query->where('user_id', '=', auth()->id()))->ignore($this->transactionType->id);
             }
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
@@ -35,6 +36,10 @@ class AppServiceProvider extends ServiceProvider
             $this->js(<<<JS
             showToaster('$type', '$text');
         JS);
+        });
+
+        Carbon::macro('timeZoneIndian', function () {
+            return $this->tz(config('app.timezone_indian'));
         });
     }
 }

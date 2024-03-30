@@ -10,14 +10,14 @@ use Livewire\Component;
 #[Layout('layouts.app')]
 class TransactionsIndex extends Component
 {
-
     public array $columns = [];
+
     public string $moduleName = 'Transactions';
 
     public function render()
     {
         return view('livewire.pages.transactions.transactions-index', [
-            'collections' => []
+            'collections' => [],
         ]);
     }
 }
