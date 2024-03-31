@@ -14,4 +14,4 @@ php artisan view:cache;
 
 npm install;
 
-npm run dev;
+npm run build;
