@@ -16,8 +16,20 @@ class TransactionFactory extends Factory
      */
     public function definition(): array
     {
+
+        $itemUnits = [
+            'litre',
+            'kg',
+            'Pack',
+        ];
+
         return [
-            //
+            'user_id' => auth()->id(),
+            'description' => fake()->text(20),
+            'item_unit' => $itemUnits[random_int(0, 2)],
+            'item_count' => random_int(1, 10),
+            'item_price' => random_int(50, 200),
+            'transaction_date' => now()->format('Y-m-d'),
         ];
     }
 }
