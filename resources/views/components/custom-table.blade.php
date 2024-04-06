@@ -26,7 +26,16 @@
                                 @if ($key == 'no')
                                     <td>{{ 1 + $loop->parent->index }}</td>
                                 @elseif ($key !== 'action')
-                                    <td>{{ $item->{$key} }}</td>
+                                    <?php
+                                    $itemValue = '';
+                                    $exploded = explode('->', $key);
+                                    if (count($exploded) > 0) {
+                                        foreach ($exploded as $objectKey) {
+                                            $itemValue = $itemValue ? $itemValue?->{$objectKey} : $item?->{$objectKey};
+                                        }
+                                    }
+                                    ?>
+                                    <td>{{ $itemValue }}</td>
                                 @elseif($key == 'action')
                                     <td>
                                         @if (!empty($column['view']) && $column['view'])
@@ -97,30 +106,32 @@
                 {{ $collections->links() }}
             </div>
         @endif
-        <x-confirmation-modal name="custom-data-table">
-            <div class="p-4">
-                <h2 class="text-lg font-medium text-gray-900">
-                    Are you sure you want to delete this {{ $moduleName }}?
-                </h2>
+        @if (!empty($columns['action']['delete']))
+            <x-confirmation-modal name="custom-data-table">
+                <div class="p-4">
+                    <h2 class="text-lg font-medium text-gray-900">
+                        Are you sure you want to delete this {{ $moduleName }}?
+                    </h2>
 
-                <p class="mt-1 text-sm text-gray-600">
-                    This action can't be reverted so please make sure double check your decision.
-                </p>
+                    <p class="mt-1 text-sm text-gray-600">
+                        This action can't be reverted so please make sure double check your decision.
+                    </p>
 
-                <div class="mt-6 flex justify-end">
-                    <x-secondary-button x-on:click="$dispatch('close-modal', { name: 'custom-data-table' })">
-                        {{ __('Cancel') }}
-                    </x-secondary-button>
+                    <div class="mt-6 flex justify-end">
+                        <x-secondary-button x-on:click="$dispatch('close-modal', { name: 'custom-data-table' })">
+                            {{ __('Cancel') }}
+                        </x-secondary-button>
 
-                    <x-custom-button x-bind:disabled="isLoading" x-on:click="callDeleteResource()" class="ml-3">
-                        {{ $moduleName }}
-                    </x-custom-button>
+                        <x-custom-button x-bind:disabled="isLoading" x-on:click="callDeleteResource()" class="ml-3">
+                            {{ $moduleName }}
+                        </x-custom-button>
+                    </div>
                 </div>
-            </div>
-        </x-confirmation-modal>
+            </x-confirmation-modal>
+        @endif
     </div>
     @script
-        @if (!empty($column['delete']))
+        @if (!empty($columns['action']['delete']))
             <script>
                 Alpine.data('customDataTable', () => {
                     return {
@@ -135,7 +146,7 @@
                         },
                         async callDeleteResource() {
                             this.isLoading = true;
-                            await $wire.call("{{ $column['delete']['deleteFunction'] }}", this.resourceId);
+                            await $wire.call("{{ $columns['action']['delete']['deleteFunction'] }}", this.resourceId);
                             this.isLoading = false;
                             $wire.dispatch('close-modal', {
                                 name: 'custom-data-table'
@@ -143,6 +154,12 @@
                             showToaster('success', '{{ $moduleName }} successfully Deleted.');
                         },
                     };
+                });
+            </script>
+        @else
+            <script>
+                Alpine.data('customDataTable', () => {
+                    return {};
                 });
             </script>
         @endif

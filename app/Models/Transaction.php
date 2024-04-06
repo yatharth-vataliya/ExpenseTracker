@@ -27,4 +27,19 @@ class Transaction extends Model
     {
         return $this->belongsTo(TransactionType::class, 'transaction_type_id', 'id');
     }
+
+    protected function itemCount(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value / 100);
+    }
+
+    protected function itemPrice(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value / 100);
+    }
+
+    protected function total(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value / 100);
+    }
 }

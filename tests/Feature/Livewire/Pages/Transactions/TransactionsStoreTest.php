@@ -1,7 +1,6 @@
 <?php
 
 use App\Livewire\Pages\Transactions\TransactionsStore;
-use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
