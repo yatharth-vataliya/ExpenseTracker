@@ -12,6 +12,6 @@ php artisan route:cache;
 
 php artisan view:cache;
 
-npm install;
+bun install;
 
-npm run build;
+bun run build;
