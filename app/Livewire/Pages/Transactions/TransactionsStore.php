@@ -63,6 +63,7 @@ class TransactionsStore extends Component
             $field['user_id'] = $userId;
             $field['item_count'] *= 100;
             $field['item_price'] *= 100;
+
             return $field;
         });
 

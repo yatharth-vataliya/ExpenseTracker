@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
@@ -23,15 +23,23 @@ class Transaction extends Model
         'transaction_date',
     ];
 
-    // protected function transactionDate(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: function (mixed $date) {
-    //             return Carbon::createFromDate($date)->timezoneIndian();
-    //         },
-    //         set: function (mixed $date) {
-    //             return Carbon::createFromDate($date);
-    //         }
-    //     );
-    // }
+    public function transactionType(): BelongsTo
+    {
+        return $this->belongsTo(TransactionType::class, 'transaction_type_id', 'id');
+    }
+
+    protected function itemCount(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value / 100);
+    }
+
+    protected function itemPrice(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value / 100);
+    }
+
+    protected function total(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value / 100);
+    }
 }

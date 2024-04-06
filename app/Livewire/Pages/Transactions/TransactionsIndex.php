@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Transactions;
 
+use App\Models\Transaction;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -10,14 +11,37 @@ use Livewire\Component;
 #[Layout('layouts.app')]
 class TransactionsIndex extends Component
 {
-    public array $columns = [];
+    public array $columns = [
+        'no' => [
+            'header' => 'No',
+        ],
+        'transactionType->transaction_type_name' => 'Transaction Type',
+        'description' => 'Description of Transaction',
+        'item_unit' => 'Item Unit',
+        'item_count' => 'Item Count',
+        'item_price' => 'Item Price',
+        'total' => 'Total',
+        'transaction_date' => 'Transaction Date',
+        // 'action' => [
+        //     'header' => 'Action',
+        //     //"view" => true,
+        //     'edit' => false,
+        //     'delete' => [
+        //         'isDelete' => true,
+        //         'deleteFunction' => 'deleteTransactionType',
+        //         'deleteFunctionParameters' => ['id'],
+        //     ],
+        // ],
+    ];
 
     public string $moduleName = 'Transactions';
 
     public function render()
     {
+        $transactions = Transaction::with('transactionType')->paginate(5);
+
         return view('livewire.pages.transactions.transactions-index', [
-            'collections' => [],
+            'collections' => $transactions,
         ]);
     }
 }
