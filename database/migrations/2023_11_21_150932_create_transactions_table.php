@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('transaction_date')->index('transactions_transaction_date_index');
             //$table->softDeletes();
             $table->dateTime('deleted_at')->nullable();
-            $table->dateTime('created_at')->default(now());
+            $table->dateTime('created_at')->default(now()); // There is mistake in this statment that default(now()) means the date when migrations run so will correct with new alter migration for this.
             $table->dateTime('updated_at')->nullable();
             // $table->timestamps();
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
