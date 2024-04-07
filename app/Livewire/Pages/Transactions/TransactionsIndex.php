@@ -6,11 +6,15 @@ use App\Models\Transaction;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 #[Title('Transactions')]
 #[Layout('layouts.app')]
 class TransactionsIndex extends Component
 {
+    use WithoutUrlPagination, WithPagination;
+
     public array $columns = [
         'no' => [
             'header' => 'No',
@@ -38,7 +42,7 @@ class TransactionsIndex extends Component
 
     public function render()
     {
-        $transactions = Transaction::with('transactionType')->paginate(5);
+        $transactions = Transaction::with('transactionType')->latest('transaction_date')->paginate(5);
 
         return view('livewire.pages.transactions.transactions-index', [
             'collections' => $transactions,
