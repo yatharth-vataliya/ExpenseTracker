@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use App\Providers\AppServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -33,7 +33,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         Auth::login($user);
 
-        $this->redirect(RouteServiceProvider::HOME, navigate: true);
+        $this->redirect(AppServiceProvider::HOME, navigate: true);
     }
 }; ?>
 

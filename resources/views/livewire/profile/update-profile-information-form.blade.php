@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use App\Providers\AppServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
@@ -52,7 +52,7 @@ new class extends Component
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $path = session('url.intended', RouteServiceProvider::HOME);
+            $path = session('url.intended', AppServiceProvider::HOME);
 
             $this->redirect($path);
 

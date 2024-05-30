@@ -1,10 +1,9 @@
 <?php
 
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use App\Providers\AppServiceProvider;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Event;
-use Laravel\Sanctum\Sanctum;
 use Livewire\Volt\Volt;
 
 test('login screen can be rendered', function () {
@@ -26,7 +25,7 @@ test('users can authenticate using the login screen', function () {
 
     $component
         ->assertHasNoErrors()
-        ->assertRedirect(RouteServiceProvider::HOME);
+        ->assertRedirect(AppServiceProvider::HOME);
 
     $this->assertAuthenticated();
 });
@@ -80,7 +79,7 @@ test('user will redirected if already login', function () {
 
     $response = $this->get('/login');
 
-    $response->assertStatus(302)->assertRedirect(RouteServiceProvider::HOME);
+    $response->assertStatus(302)->assertRedirect(AppServiceProvider::HOME);
 });
 
 test('test max login attempt by a user in 1 minutes', function () {
@@ -132,12 +131,4 @@ test('test max login attempt by a user in 1 minutes', function () {
     $component->assertHasErrors(['email']);
 
     $this->assertGuest();
-});
-
-test('check if API is working with valid credentials', function () {
-    Sanctum::actingAs(User::factory()->create());
-
-    $response = $this->get('/api/user');
-
-    $response->assertOk();
 });

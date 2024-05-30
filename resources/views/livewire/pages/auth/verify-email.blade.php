@@ -1,7 +1,7 @@
 <?php
 
 use App\Livewire\Actions\Logout;
-use App\Providers\RouteServiceProvider;
+use App\Providers\AppServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
@@ -16,7 +16,7 @@ new #[Layout('layouts.guest')] class extends Component
     {
         if (Auth::user()->hasVerifiedEmail()) {
             $this->redirect(
-                session('url.intended', RouteServiceProvider::HOME),
+                session('url.intended', AppServiceProvider::HOME),
                 navigate: true
             );
 

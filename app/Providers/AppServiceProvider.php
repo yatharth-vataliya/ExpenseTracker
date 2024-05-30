@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public const string HOME = '/dashboard';
+
     /**
      * Register any application services.
      */
