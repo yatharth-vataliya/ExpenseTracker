@@ -1,4 +1,6 @@
-composer install --optimize-autoloader --no-dev
+composer install --optimize-autoloader --no-dev;
+
+composer run-script clearAllCache;
 
 php artisan migrate;
 
