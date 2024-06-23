@@ -22,7 +22,7 @@ bash install.sh
 - It will as ask you for input about what you want to install.
 - You can do that multiple time for installing multiple tools.
 
-> ### Above install script is only for (Debian/Ubuntu) if you are on Windows or Mac then you can use [herd](www.herd.laravel.com) which is Laravel first Party UI Software that manages all the stuff like PHP and it's versions, DB, NodeJs, and many more.
+> ### Above install script is only for (Debian/Ubuntu) if you are on Windows or Mac then you can use [herd](https://herd.laravel.com) which is Laravel first Party UI Software that manages all the stuff like PHP and it's versions, DB, NodeJs, and many more.
 
 ## Security Vulnerabilities
 
