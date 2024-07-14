@@ -2,7 +2,7 @@
 
 ## Setup steps
 
-### First you have to make sure that your system meets minimum requirements to run this project and following are required tools (this instruction guide is intented for Debian/Ubuntu user only)
+### First you have to make sure that your system meets minimum requirements to run this project and following are required tools (this instruction guide is intented for Debian/Ubuntu user only).
 
 > ***Prerequirements***
 >
@@ -24,12 +24,13 @@ bash install.sh
 
 > ### Above install script is only for (Debian/Ubuntu) if you are on Windows or Mac then you can use [herd](https://herd.laravel.com) which is Laravel first Party UI Software that manages all the stuff like PHP and it's versions, DB, NodeJs, and many more.
 
-- After downloading all required tools you can just clone this repo using below mentioned command
+- After downloading all required tools you can just clone this repo using below mentioned command.
 
 ```bash
 git clone https://github.com/yatharth-vataliya/ExpenseTracker.git
 ```
 
+- Now go into the repository directory.
 - Then rename .env.example file to .env
 
 ```bash
@@ -46,7 +47,7 @@ bash ci.sh
 
 - Now you can start this project by following command `php artisan serve`
 
-- Now you will get a URL in terminal where this project is deployed (mostly it will be [http://localhost:8000/](http://localhost:8000/))
+- Now you will get a URL in terminal where this project is deployed (mostly it will be [http://localhost:8000/](http://localhost:8000/)).
 
 ## Security Vulnerabilities
 
