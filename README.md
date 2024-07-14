@@ -34,6 +34,7 @@ git clone https://github.com/yatharth-vataliya/ExpenseTracker.git
 - Then rename .env.example file to .env
 
 ```bash
+php artisan key:generate
 mv .env.example .env
 ```
 
