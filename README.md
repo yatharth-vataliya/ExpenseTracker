@@ -14,7 +14,7 @@
 
 ### You can download everything manually or use my script for download everything easily
 
-- Copy this [install.sh](https://github.com/yatharth-vataliya/linux-scripts/blob/master/install.sh) file locally and run below mentioned command in root bash shell
+- Copy this [install.sh](https://github.com/yatharth-vataliya/linux-scripts/blob/master/install.sh) file locally and run below mentioned command in bash shell.
 
 ```bash
 bash install.sh
@@ -23,6 +23,30 @@ bash install.sh
 - You can do that multiple time for installing multiple tools.
 
 > ### Above install script is only for (Debian/Ubuntu) if you are on Windows or Mac then you can use [herd](https://herd.laravel.com) which is Laravel first Party UI Software that manages all the stuff like PHP and it's versions, DB, NodeJs, and many more.
+
+- After downloading all required tools you can just clone this repo using below mentioned command
+
+```bash
+git clone https://github.com/yatharth-vataliya/ExpenseTracker.git
+```
+
+- Then rename .env.example file to .env
+
+```bash
+mv .env.example .env
+```
+
+- After that setup database credentials and necessary values in .env file
+
+- Then just run below mentioned command to install necessary PHP and JS libraries.
+
+```bash
+bash ci.sh
+```
+
+- Now you can start this project by following command `php artisan serve`
+
+- Now you will get a URL in terminal where this project is deployed (mostly it will be [http://localhost:8000/](http://localhost:8000/))
 
 ## Security Vulnerabilities
 
