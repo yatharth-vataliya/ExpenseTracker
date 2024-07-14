@@ -34,8 +34,8 @@ git clone https://github.com/yatharth-vataliya/ExpenseTracker.git
 - Then rename .env.example file to .env
 
 ```bash
-php artisan key:generate
 mv .env.example .env
+php artisan key:generate
 ```
 
 - After that setup database credentials and necessary values in .env file
