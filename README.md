@@ -46,6 +46,12 @@ php artisan key:generate
 bash ci.sh
 ```
 
+- For running scheduling commands please make change in your cron file using `crontab -e` in you terminal then paste following line at the end of crontab file
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
 - Now you can start this project by following command `php artisan serve`
 
 - Now you will get a URL in terminal where this project is deployed (mostly it will be [http://localhost:8000/](http://localhost:8000/)).

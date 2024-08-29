@@ -15,4 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
-    })->create();
+    })
+    ->withSchedule(function ($command) {
+        $command->command('app:rest-your-body --isolated')->hourly();
+        /*$command->command('app:rest-your-body')->hourly()->withoutOverlapping();*/ // No need of --isolated in command argument with this type of use case
+    })
+    ->create();
