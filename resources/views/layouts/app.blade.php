@@ -14,51 +14,25 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+
+    </style>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased sm:h-auto">
     <ul class="fixed w-60 top-20 right-2 backdrop-blur-sm z-10" id="toaster-container"></ul>
-    <div class="min-h-screen bg-gray-100">
+    <div class="sm:relative sm:h-auto bg-gray-100">
         <livewire:layout.navigation />
-        {{--
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-            --}}
 
         <!-- Page Content -->
-        <div class="flex">
+        <div class="flex-col sm:flex sm:flex-row sm:flex-auto">
             <x-partials.sidebar />
-            <main class="w-full overflow-auto" id="main-content-wrapper">
+            <section class="w-full sm:h-max overflow-auto" id="main-content-wrapper">
                 {{ $slot }}
-            </main>
+            </section>
         </div>
     </div>
-    <script>
-        document.addEventListener('livewire:navigated', () => {
-            let mainNavbar = document.getElementById("main-nav-bar");
-            let mainSidebar = document.getElementById("main-side-bar");
-            let mainContentWrapper = document.getElementById("main-content-wrapper");
-            if (mainNavbar && mainSidebar && mainContentWrapper) {
-                mainSidebar.style.height = `calc(100vh - ${mainNavbar.offsetHeight}px)`;
-                mainContentWrapper.style.height = `calc(100vh - ${mainNavbar.offsetHeight}px)`;
-            }
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            let mainNavbar = document.getElementById("main-nav-bar");
-            let mainSidebar = document.getElementById("main-side-bar");
-            let mainContentWrapper = document.getElementById("main-content-wrapper");
-            if (mainNavbar && mainSidebar && mainContentWrapper) {
-                mainSidebar.style.height = `calc(100vh - ${mainNavbar.offsetHeight}px)`;
-                mainContentWrapper.style.height = `calc(100vh - ${mainNavbar.offsetHeight}px)`;
-            }
-        });
-    </script>
     @stack('scripts')
     @yield('scripts')
 </body>

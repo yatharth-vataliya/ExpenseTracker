@@ -27,6 +27,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    'health_reminder' => env('HEALTH_REMINDER', false),
 
     /*
     |--------------------------------------------------------------------------

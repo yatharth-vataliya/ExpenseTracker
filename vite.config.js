@@ -1,7 +1,14 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
+import os from 'node:os';
+
+const hostname = os.hostname();
+
 export default defineConfig({
+    server: {
+        origin: `http://${hostname}:5173`,
+    },
     plugins: [
         laravel({
             input: [

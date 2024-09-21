@@ -34,8 +34,7 @@ git clone https://github.com/yatharth-vataliya/ExpenseTracker.git
 - Then rename .env.example file to .env
 
 ```bash
-mv .env.example .env
-php artisan key:generate
+cp .env.example .env
 ```
 
 - After that setup database credentials and necessary values in .env file
@@ -44,6 +43,13 @@ php artisan key:generate
 
 ```bash
 bash ci.sh
+php artisan key:generate
+```
+
+- For running scheduling commands please make change in your cron file using `crontab -e` in you terminal then paste following line at the end of crontab file
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 - Now you can start this project by following command `php artisan serve`
