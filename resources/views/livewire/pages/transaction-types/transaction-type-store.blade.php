@@ -3,13 +3,13 @@
         <div class="flex justify-center">
             <div class="font-bold">
                 <p>
-                    Transaction Type Store 
+                    Transaction Type Store
                 </p>
             </div>
         </div>
-        <div class="py-2 flex justify-center">
+        <div class="py-2 sm:flex sm:justify-center">
             <form wire:submit="storeTransactionType">
-                <div class="grid grid-cols-1 auto-cols-auto gap-4 w-[500px]">
+                <div class="grid grid-cols-1 auto-cols-auto gap-4 w-full sm:w-[500px]">
                     <div>
                         <x-input-label for="transaction_type_name" value="Transaction Type Name" />
                         <x-text-input wire:model.blur="form.transaction_type_name" id="transaction_type_name"

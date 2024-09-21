@@ -13,38 +13,29 @@
 
     @vite(['resources/css/app.css'])
 
-    <style>
-        @keyframes radient-animation {
-            0% {
-                background-size: 400%;
-            }
-
-            50% {
-                background-size: 100%;
-            }
-
-            75% {
-                background-size: 150%;
-            }
-
-            100% {
-                background-size: 400%;
-            }
-        }
-
-        .background-gradient-animation {
-            background-image: linear-gradient(to right, red, white);
-            animation: radient-animation 60s ease-out infinite;
-        }
-    </style>
-
 </head>
 
-<body class="font-sans antialiased dark:bg-black dark:text-white/50 background-gradient-animation">
-    <div class="dark:bg-black h-screen w-full p-4 flex flex-col">
-        <div class="flex justify-end w-full">
+<body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <div class="dark:bg-black h-screen w-full p-2 sm:p-4 flex flex-col bg-gray-100">
+        <div class="flex w-full bg-gray-200 rounded">
             @if (Route::has('login'))
-                <livewire:welcome.navigation />
+                <div
+                    class="p-2 sm:p-4 dark:bg-black sm:rounded w-full flex [&_a]:block flex-col gap-2 [&_a]:w-full text-center md:flex-row md:[&_a]:w-auto">
+                    @auth
+                        <a href="{{ url('/dashboard') }}"
+                            class="font-semibold text-black bg-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 inline-block hover:shadow-md rounded p-2"
+                            wire:navigate>Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="font-semibold text-black bg-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 hover:shadow-md rounded p-2"
+                            wire:navigate>Log in</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                                class="font-semibold text-black bg-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 hover:shadow-md rounded p-2"
+                                wire:navigate>Register</a>
+                        @endif
+                    @endauth
+                </div>
             @endif
         </div>
         <div class="h-full w-full flex flex-col justify-center items-center">

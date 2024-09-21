@@ -46,3 +46,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upload-index', [UploadDataController::class, 'index'])->name('upload-index');
     Route::post('/upload-data', [UploadDataController::class, 'uploadData'])->name('upload-data');
 });
+
+Route::get('/html/{layoutName?}', function (?string $layoutName = null) {
+    return ! empty($layoutName) ? view('temp.'.$layoutName) : 'No layout Found';
+});
+
+Route::fallback(function () {
+    return 'You are on the wrong place please find good one';
+});
