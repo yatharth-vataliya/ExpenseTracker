@@ -1,4 +1,4 @@
-<aside class="sm:max-h-screen sm:sticky sm:top-0 sm:left-0 bg-violet-100 w-full sm:w-60 h-min sm:h-auto overflow-auto">
+<aside class="sm:max-h-screen sm:h-auto sm:sticky sm:top-0 sm:left-0 bg-violet-100 w-full sm:w-60 h-min overflow-auto">
     <ul class="w-full">
         <x-li-tag route-name="profile" route-label="Profile" />
         <x-li-tag route-name="upload-index" route-label="Upload Data" />

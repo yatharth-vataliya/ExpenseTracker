@@ -22,7 +22,7 @@
 
 <body class="font-sans antialiased sm:h-auto">
     <ul class="fixed w-60 top-20 right-2 backdrop-blur-sm z-10" id="toaster-container"></ul>
-    <div class="sm:relative sm:h-auto bg-gray-100">
+    <div class="sm:relative sm:min-h-screen bg-gray-100">
         <livewire:layout.navigation />
 
         <!-- Page Content -->
