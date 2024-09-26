@@ -8,6 +8,7 @@ const hostname = os.hostname();
 export default defineConfig({
     server: {
         origin: `http://${hostname}:5173`,
+        host: true,
     },
     plugins: [
         laravel({
