@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Number;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
 
@@ -20,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
+
+        Number::useCurrency('INR');
     }
 
     /**
