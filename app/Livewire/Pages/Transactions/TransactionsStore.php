@@ -5,6 +5,8 @@ namespace App\Livewire\Pages\Transactions;
 use App\Models\Transaction;
 use App\Models\TransactionType;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -58,7 +60,7 @@ class TransactionsStore extends Component
 
         $this->authorize('create', Transaction::class);
 
-        $userId = auth()->id();
+        $userId = Auth::id();
         $formFields = Arr::map($this->formFields, function ($field) use ($userId) {
             $field['user_id'] = $userId;
             $field['item_count'] *= 100;
@@ -67,7 +69,9 @@ class TransactionsStore extends Component
             return $field;
         });
 
-        Transaction::insert($formFields);
+        DB::transaction(function () use ($formFields) {
+            Transaction::insert($formFields);
+        }, 3);
 
         $this->reset();
         $this->addFields();
