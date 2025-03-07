@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Number;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
@@ -31,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::shouldBeStrict();
+
+        DB::prohibitDestructiveCommands(app()->isProduction());
 
         $this->bootMacros();
     }

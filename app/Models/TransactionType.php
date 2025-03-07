@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionType extends Model
 {
@@ -25,7 +26,7 @@ class TransactionType extends Model
 
     public function scopeCurrentUserTransactionType(Builder $query): void
     {
-        $query->where('user_id', auth()->id());
+        $query->where('user_id', Auth::id());
     }
 
     public function transactions(): HasMany
