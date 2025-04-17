@@ -29,7 +29,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth'])->group(function () {
 
@@ -48,9 +48,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/html/{layoutName?}', function (?string $layoutName = null) {
-    return ! empty($layoutName) ? view('temp.'.$layoutName) : 'No layout Found';
+    return ! empty($layoutName) ? view('temp.' . $layoutName) : 'No layout Found';
 });
 
 Route::fallback(function () {
-    return 'You are on the wrong place please find good one';
+    abort(404, 'You are on the wrong please find good one');
 });

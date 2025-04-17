@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.9",
         "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.2",
@@ -20,8 +20,8 @@
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
-        "pestphp/pest": "^2.35",
-        "pestphp/pest-plugin-laravel": "^2.4"
+        "pestphp/pest": "^3.8",
+        "pestphp/pest-plugin-laravel": "^3.1"
     },
     "autoload": {
         "psr-4": {
