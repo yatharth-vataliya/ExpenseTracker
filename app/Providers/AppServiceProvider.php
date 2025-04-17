@@ -5,6 +5,7 @@ namespace App\Providers;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Number;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
@@ -34,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
         Model::shouldBeStrict();
 
         DB::prohibitDestructiveCommands(app()->isProduction());
+        URL::forceHttps(app()->isProduction());
 
         $this->bootMacros();
     }
