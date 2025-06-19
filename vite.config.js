@@ -9,6 +9,7 @@ export default defineConfig({
     server: {
         origin: `http://${hostname}:5173`,
         host: true,
+        cors: true,
     },
     plugins: [
         laravel({
