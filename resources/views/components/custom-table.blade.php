@@ -21,7 +21,7 @@
             <tbody>
                 @if (count($collections) > 0)
                     @foreach ($collections as $item)
-                        <tr class="*:border *:border-slate-300 *:p-4 *:text-slate-500 *:hover:text-black">
+                        <tr class="*:border *:border-slate-300 *:p-4 *:text-slate-500 hover:*:text-black">
                             @foreach ($columns as $key => $column)
                                 @if ($key == 'no')
                                     <td>{{ 1 + $loop->parent->index }}</td>
@@ -40,7 +40,7 @@
                                     <td>
                                         @if (!empty($column['view']) && $column['view'])
                                             <a href=""
-                                                class="mx-1 p-2 hover:shadow-lg bg-indigo-400 text-white rounded hover:cursor-default">
+                                                class="mx-1 p-2 hover:shadow-lg bg-indigo-400 text-white rounded-sm hover:cursor-default">
                                                 View
                                             </a>
                                         @endif
@@ -66,7 +66,7 @@
                                             {{-- <button
                                             wire:click="{{ $column['delete']['deleteFunction'] }}({{ $parametersString }})"
                                             type="button"
-                                            class="mx-1 p-2 hover:shadow-lg bg-green-400 text-white rounded">
+                                            class="mx-1 p-2 hover:shadow-lg bg-green-400 text-white rounded-sm">
                                             Delete
                                         </button> --}}
                                             <x-custom-link-button
@@ -165,5 +165,5 @@
         @endif
     @endscript
 @else
-    <div class="flex justify-center bg-gray-200 shadow-md rounded p-2">No Data Available</div>
+    <div class="flex justify-center bg-gray-200 shadow-md rounded-sm p-2">No Data Available</div>
 @endif

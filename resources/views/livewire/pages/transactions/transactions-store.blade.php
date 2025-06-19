@@ -1,5 +1,5 @@
 <div class="p-4 rounded-md">
-    <div class="w-full p-4 flex justify-center sticky top-0 backdrop-blur-sm">
+    <div class="w-full p-4 flex justify-center sticky top-0 backdrop-blur-xs">
         <x-custom-button wire:click="addFields">
             Add transaction
         </x-custom-button>

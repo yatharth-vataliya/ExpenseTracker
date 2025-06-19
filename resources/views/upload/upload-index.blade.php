@@ -18,7 +18,7 @@
                 </x-custom-button>
             </form>
             <template x-for="(file, index) in files" x-bind:key="index">
-                <div class="border rounded shadow border-violet-100 my-2">
+                <div class="border rounded-sm shadow-sm border-violet-100 my-2">
                     <div class="p-2">
                         <p>File Name :- <span x-text="file.name"></span></p>
                     </div>

@@ -10,7 +10,7 @@ export async function showToaster(type = "info", text = "This is just info text"
 
     const liElement = document.createElement("li");
     liElement.innerText = text;
-    let classString = "w-60 overflow-hidden font-semibold p-2 mt-2 break-words text-white shadow-md rounded text-wrap text-center border-s-8 relative before:absolute before:h-1 before:w-full before:bottom-0 before:left-0 before:animate-toaster-progress animate-show-toaster";
+    let classString = "w-60 overflow-hidden font-semibold p-2 mt-2 break-words text-white shadow-md rounded-sm text-wrap text-center border-s-8 relative before:absolute before:h-1 before:w-full before:bottom-0 before:left-0 before:animate-toaster-progress animate-show-toaster";
     const toasterTypesClass = {
         "success": "border-red-700 bg-red-500 before:bg-red-900",
         "info": "border-blue-700 bg-blue-400 before:bg-blue-900",

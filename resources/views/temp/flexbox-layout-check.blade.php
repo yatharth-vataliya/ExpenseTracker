@@ -23,10 +23,10 @@
 <body class="max-h-screen">
     <div class="p-3 bg-gray-200 text-center">Header</div>
     <div class="w-full flex bg-gray-400">
-        <div class="bg-lime-200 p-3 w-48 rounded">
+        <div class="bg-lime-200 p-3 w-48 rounded-sm">
             Aside
         </div>
-        <div class="bg-lime-400 p-3 rounded">
+        <div class="bg-lime-400 p-3 rounded-sm">
             <div class="h-48 m-3 bg-green-100">Hello</div>
             <div class="h-48 m-3 bg-green-100">Hello</div>
             <div class="h-48 m-3 bg-green-100">Hello</div>

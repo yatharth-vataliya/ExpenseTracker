@@ -1,5 +1,5 @@
 <div class="p-2">
-    <div class="p-2 rounded">
+    <div class="p-2 rounded-sm">
         <div class="flex justify-center">
             <div class="font-bold">
                 <p>

@@ -17,21 +17,21 @@
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
     <div class="dark:bg-black h-screen w-full p-2 sm:p-4 flex flex-col bg-gray-100">
-        <div class="flex w-full bg-gray-200 rounded">
+        <div class="flex w-full bg-gray-200 rounded-sm">
             @if (Route::has('login'))
                 <div
-                    class="p-2 sm:p-4 dark:bg-black sm:rounded w-full flex [&_a]:block flex-col gap-2 [&_a]:w-full text-center md:flex-row md:[&_a]:w-auto">
+                    class="p-2 sm:p-4 dark:bg-black sm:rounded-sm w-full flex [&_a]:block flex-col gap-2 [&_a]:w-full text-center md:flex-row md:[&_a]:w-auto">
                     @auth
                         <a href="{{ url('/dashboard') }}"
-                            class="font-semibold text-black bg-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 inline-block hover:shadow-md rounded p-2"
+                            class="font-semibold text-black bg-white hover:text-gray-900 focus:outline-solid focus:outline-2 focus:rounded-xs focus:outline-red-500 inline-block hover:shadow-md rounded-sm p-2"
                             wire:navigate>Dashboard</a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="font-semibold text-black bg-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 hover:shadow-md rounded p-2"
+                            class="font-semibold text-black bg-white hover:text-gray-900 focus:outline-solid focus:outline-2 focus:rounded-xs focus:outline-red-500 hover:shadow-md rounded-sm p-2"
                             wire:navigate>Log in</a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="font-semibold text-black bg-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 hover:shadow-md rounded p-2"
+                                class="font-semibold text-black bg-white hover:text-gray-900 focus:outline-solid focus:outline-2 focus:rounded-xs focus:outline-red-500 hover:shadow-md rounded-sm p-2"
                                 wire:navigate>Register</a>
                         @endif
                     @endauth

@@ -7178,7 +7178,7 @@ var require_module_cjs9 = __commonJS({
           signal: controller.signal,
           capture: true
         });
-        el.addEventListener("blur", () => processInputValue(el, false), { signal: controller.signal });
+        el.addEventListener("blur-sm", () => processInputValue(el, false), { signal: controller.signal });
         function processInputValue(el2, shouldRestoreCursor = true) {
           let input = el2.value;
           let template = templateFn(input);
@@ -10885,7 +10885,7 @@ directive("model", ({ el, directive: directive2, component, cleanup }) => {
   }
   let isLive = modifiers.includes("live");
   let isLazy = modifiers.includes("lazy") || modifiers.includes("change");
-  let onBlur = modifiers.includes("blur");
+  let onBlur = modifiers.includes("blur-sm");
   let isDebounced = modifiers.includes("debounce");
   let update = expression.startsWith("$parent") ? () => component.$wire.$parent.$commit() : () => component.$wire.$commit();
   let debouncedUpdate = isTextInput(el) && !isDebounced && isLive ? debounce(update, 150) : update;

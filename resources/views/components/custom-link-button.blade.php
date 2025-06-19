@@ -13,7 +13,7 @@ $colorVarient = match ($color) {
 ?>
 
 <a {{ $attributes->merge([
-    'class' => "cursor-pointer mx-1 p-2 hover:shadow-lg text-white rounded {$colorVarient}",
+    'class' => "cursor-pointer mx-1 p-2 hover:shadow-lg text-white rounded-sm {$colorVarient}",
 ]) }}>
     {{ $slot }}
 </a>

@@ -14,7 +14,7 @@ $colorVarient = match ($color) {
 <button
     {{ $attributes->merge([
         'type' => 'button',
-        'class' => "p-2 hover:shadow-lg text-white rounded disabled:bg-gray-500 disabled:hover:shadow-none disabled:cursor-not-allowed {$colorVarient}",
+        'class' => "p-2 hover:shadow-lg text-white rounded-sm disabled:bg-gray-500 disabled:hover:shadow-none disabled:cursor-not-allowed {$colorVarient}",
     ]) }}>
     {{ $slot }}
 </button>
