@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withSchedule(function ($command) {
-        $command->command('app:rest-your-body --isolated')->hourly()->timezone(config('app.timezone_indian'));
+        $command->command('app:rest-your-body --isolated')->timezone(config('app.timezone_indian'))->cron('*/20 * * * *');
         /*$command->command('app:rest-your-body')->hourly()->withoutOverlapping();*/ // No need of --isolated in command argument with this type of use case
     })
     ->create();
