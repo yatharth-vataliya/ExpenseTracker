@@ -46,3 +46,8 @@ function something()
 {
     // ..
 }
+
+// Livewire related changes
+
+//pest()->extend(Tests\TestCase::class)->in('Feature', '../resources/views/');
+

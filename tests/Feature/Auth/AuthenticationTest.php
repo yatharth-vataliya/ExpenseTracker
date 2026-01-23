@@ -10,7 +10,7 @@ test('login screen can be rendered', function () {
     $response = $this->get('/login');
 
     $response
-        ->assertSeeVolt('pages.auth.login')
+        ->assertSeeLivewire('pages.auth.login')
         ->assertOk();
 });
 
@@ -54,7 +54,7 @@ test('navigation menu can be rendered', function () {
     $response = $this->get('/dashboard');
 
     $response
-        ->assertSeeVolt('layout.navigation')
+        ->assertSeeLivewire('layout.navigation')
         ->assertOk();
 });
 
