@@ -4,7 +4,7 @@ use App\Models\User;
 use App\Providers\AppServiceProvider;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Event;
-use Livewire\Volt\Volt;
+use Livewire\Livewire;
 
 test('login screen can be rendered', function () {
     $response = $this->get('/login');
@@ -17,7 +17,7 @@ test('login screen can be rendered', function () {
 test('users can authenticate using the login screen', function () {
     $user = User::factory()->create();
 
-    $component = Volt::test('pages.auth.login')
+    $component = Livewire::test('pages.auth.login')
         ->set('form.email', $user->email)
         ->set('form.password', 'password');
 
@@ -33,7 +33,7 @@ test('users can authenticate using the login screen', function () {
 test('users can not authenticate with invalid password', function () {
     $user = User::factory()->create();
 
-    $component = Volt::test('pages.auth.login')
+    $component = Livewire::test('pages.auth.login')
         ->set('form.email', $user->email)
         ->set('form.password', 'wrong-password');
 
@@ -63,7 +63,7 @@ test('users can logout', function () {
 
     $this->actingAs($user);
 
-    $component = Volt::test('layout.navigation');
+    $component = Livewire::test('layout.navigation');
 
     $component->call('logout');
 
@@ -84,7 +84,7 @@ test('user will redirected if already login', function () {
 
 test('test max login attempt by a user in 1 minutes', function () {
     $email = 'wrongemail@gmail.com';
-    $component = Volt::test('pages.auth.login')
+    $component = Livewire::test('pages.auth.login')
         ->set('form.email', $email)
         ->set('form.password', 'password');
 

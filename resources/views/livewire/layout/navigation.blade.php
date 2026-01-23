@@ -2,7 +2,7 @@
 
 use App\Livewire\Actions\Logout;
 use App\Livewire\Forms\LogoutForm;
-use Livewire\Volt\Component;
+use Livewire\Component;
 
 new class extends Component {
     /**
